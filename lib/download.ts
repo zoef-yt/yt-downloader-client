@@ -20,6 +20,7 @@ export async function downloadVideo({
 	return new Promise(async (resolve, reject) => {
 		sse.onmessage = (event) => {
 			const data = JSON.parse(event.data);
+			console.log('SSE message:', data);
 			if (onProgress) onProgress(data.progress);
 			if (data.status === 'processing') {
 				messageSetter('Finalizing download...');
