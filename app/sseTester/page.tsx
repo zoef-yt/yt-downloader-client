@@ -1,18 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function SSETester() {
 	const [progress, setProgress] = useState<number[]>([]);
 	const [message, setMessage] = useState('');
+	const [id, setId] = useState<string | null>(null);
 
-	const startTest = () => {
-		const newId = uuidv4();
+	useEffect(() => {
+		if (!id) return;
+
 		setProgress([]);
 		setMessage('Connecting...');
 
-		const source = new EventSource(`${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT}/api/test-stream/${newId}`);
+		const source = new EventSource(`${process.env.NEXT_PUBLIC_BACKEND_ENDPOINT}/api/test-stream/${id}`);
 
 		source.onmessage = (event) => {
 			const data = JSON.parse(event.data);
@@ -31,6 +33,15 @@ export default function SSETester() {
 			setMessage('Error occurred. Check console.');
 			source.close();
 		};
+
+		return () => {
+			source.close();
+		};
+	}, [id]);
+
+	const startTest = () => {
+		const newId = uuidv4();
+		setId(newId);
 	};
 
 	return (
