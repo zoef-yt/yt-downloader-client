@@ -83,3 +83,40 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animate-gradient {
+	background-size: 200% 200%;
+	animation: gradient 2s ease infinite;
+}
+
+.animate-gradient-x {
+	background-size: 200% auto;
+	animation: gradient 2s ease infinite;
+}
+
+@keyframes bounce-in {
+	0% {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.animate-bounce-in {
+	animation: bounce-in 0.4s ease-out forwards;
+}

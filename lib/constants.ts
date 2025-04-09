@@ -17,7 +17,6 @@ export const DOWNLOAD_OPTIONS: downloadOptionType = {
 
 export const FORM_DEFAULT_VALUES = {
 	ytUrl: '',
-	// ytUrl: 'https://www.youtube.com/watch?v=G-_4HKPqLso',
 	type: 'both',
 	extension: 'mp4',
 };

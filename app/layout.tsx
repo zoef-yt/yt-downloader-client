@@ -8,8 +8,8 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-	title: 'Youtube downloader',
-	description: 'Download youtube videos in audio and video formats',
+	title: 'Media downloader',
+	description: 'Download media in audio and video formats',
 };
 
 export default function RootLayout({
